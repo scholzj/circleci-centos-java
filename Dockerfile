@@ -9,7 +9,8 @@ RUN yum install -y epel-release && \
     yum install -y git tar curl wget sudo make yum-utils device-mapper-persistent-data lvm2 java-1.8.0-openjdk-headless java-1.8.0-openjdk-devel maven openssl asciidoctor && \
     yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo && \
     yum install -y docker-ce && \
-    yum clean all
+    yum clean all && \
+    gem install asciidoctor
 RUN echo "%circleci        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
 
 # Install CFSSL
