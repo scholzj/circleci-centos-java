@@ -7,6 +7,9 @@ jobs:
       - setup_remote_docker
       - checkout
       - run:
+          name: Login to Docker Hub
+          command: docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+      - run:
           name: Build Docker image
           command: docker build -t scholzj/circleci-centos-java:circle .
       - deploy:
@@ -14,9 +17,6 @@ jobs:
           command: |
             docker tag scholzj/circleci-centos-java:circle docker.io/scholzj/circleci-centos-java:centos7-java11
             docker tag scholzj/circleci-centos-java:circle docker.io/scholzj/circleci-centos-java:latest
-      - deploy:
-          name: Login to Docker Hub
-          command: docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
       - deploy:
           name: Push docker images
           command: |
