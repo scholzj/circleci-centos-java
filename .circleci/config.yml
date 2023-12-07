@@ -15,12 +15,14 @@ jobs:
       - deploy:
           name: Tag docker images
           command: |
-            docker tag scholzj/circleci-centos-java:circle docker.io/scholzj/circleci-centos-java:centos7-java11
+            docker tag scholzj/circleci-centos-java:circle docker.io/scholzj/circleci-centos-java:centos7-java17
+            docker tag scholzj/circleci-centos-java:circle docker.io/scholzj/circleci-centos-java:latest-java17
             docker tag scholzj/circleci-centos-java:circle docker.io/scholzj/circleci-centos-java:latest
       - deploy:
           name: Push docker images
           command: |
-            docker push scholzj/circleci-centos-java:centos7-java11
+            docker push scholzj/circleci-centos-java:centos7-java17
+            docker push scholzj/circleci-centos-java:latest-java17
             docker push scholzj/circleci-centos-java:latest
 workflows:
   version: 2
